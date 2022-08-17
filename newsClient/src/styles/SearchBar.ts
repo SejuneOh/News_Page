@@ -51,7 +51,7 @@ export const SearchDiv = styled.div`
 
 export const SearchList = styled.ul`
   width: 600px;
-  height: 500px;
+  height: 400px;
   border: 2px solid #e4e7e8;
   position: absolute;
   left: 33%;
