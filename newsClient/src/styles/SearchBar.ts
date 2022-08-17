@@ -48,3 +48,12 @@ export const SearchDiv = styled.div`
     right: -1px;
   }
 `;
+
+export const SearchList = styled.ul`
+  width: 600px;
+  height: 500px;
+  border: 2px solid #e4e7e8;
+  position: absolute;
+  left: 33%;
+  background-color: #fff;
+`;
