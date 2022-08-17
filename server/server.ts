@@ -1,44 +1,9 @@
 import { ApolloServer, gql } from "apollo-server";
-
+import axios from "axios";
 import dotenv from "dotenv";
 
 //  dot.env 설정
 dotenv.config({ path: "./.env" });
-
-// const reqNews = async (param: string, cnt: number) => {
-//   let result: any = "";
-//   // uri
-//   const url = "https://openapi.naver.com/v1/search/news.json";
-
-//   // search option
-//   const option = {
-//     query: param,
-//     display: cnt,
-//     sort: "date",
-//   };
-
-//   // get Reqeust
-//   await request.get(
-//     {
-//       uri: url,
-//       qs: option,
-//       headers: {
-//         "X-Naver-Client-Id": process.env.CLIENT_ID,
-//         "X-Naver-Client-Secret": process.env.CLIENT_SCRETE,
-//       },
-//     },
-//     (err, res, body) => {
-//       if (err) {
-//         return "Bad Request";
-//       }
-
-//       let json = JSON.parse(body);
-//       result = json;
-//     }
-//   );
-
-//   return result;
-// };
 
 const typeDefs = gql`
   type News {
@@ -49,14 +14,40 @@ const typeDefs = gql`
     pubDate: String
   }
 
+  type NewsList {
+    lastBuildDate: String
+    total: Int
+    start: Int
+    display: Int
+    items: [News]!
+  }
+
   type Query {
-    searchNews(param: String!, cnt: Int): [News]!
+    searchNews(param: String!, cnt: Int!): NewsList!
   }
 `;
 
 const resolvers = {
   Query: {
-    searchNews(_: any, { param = "", cnt = 0 }) {},
+    searchNews(_: any, { param = "", cnt = 0 }) {
+      const url = "https://openapi.naver.com/v1/search/news.json";
+
+      const option: any = {
+        headers: {
+          "X-Naver-Client-Id": process.env.CLIENT_ID,
+          "X-Naver-Client-Secret": process.env.CLIENT_SCRETE,
+        },
+        params: {
+          query: param,
+          display: cnt,
+          sort: "date",
+        },
+      };
+
+      return axios.get(url, option).then((res) => {
+        return res.data;
+      });
+    },
   },
 };
 
