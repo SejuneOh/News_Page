@@ -6,6 +6,8 @@ const HeaderStyle = styled.div`
   border: 1px solid gray;
   position: fixed;
   width: 100%;
+  z-index: 1;
+  background-color: #fff;
 `;
 
 const Title = styled.div`
@@ -50,6 +52,14 @@ const Option = styled(Link)`
 export default function Header() {
   const [active, setActive] = useState<boolean>(true);
 
+  const activeHandle = () => {
+    if (!active) setActive((prev) => !prev);
+  };
+
+  const disableHandel = () => {
+    if (active) setActive((prev) => !prev);
+  };
+
   return (
     <HeaderStyle>
       <Title>
@@ -59,14 +69,14 @@ export default function Header() {
         <Option
           className={active ? "active" : "disabled"}
           to="/"
-          onClick={() => setActive((prev) => !prev)}
+          onClick={activeHandle}
         >
           SEARCH
         </Option>
         <Option
           className={active ? "disabled" : "active"}
           to="/clips"
-          onClick={() => setActive((prev) => !prev)}
+          onClick={disableHandel}
         >
           CLIPS
         </Option>
