@@ -32,6 +32,10 @@ export const SearchDiv = styled.div`
     position: absolute;
     top: 50%;
     right: 50px;
+
+    &.open {
+      transform: rotate(180deg);
+    }
   }
 
   .searchIcon {

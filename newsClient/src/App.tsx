@@ -3,6 +3,14 @@ import SearchPage from "./routes/SearchPage";
 import ClipsPage from "./routes/ClipsPage";
 import Header from "./components/Header";
 
+// 프로그램 실행 시, 로컬 스토리지 생성하기
+(() => {
+  if (window.localStorage.getItem("historys") === null)
+    localStorage.setItem("historys", JSON.stringify([]));
+  if (window.localStorage.getItem("clips") === null)
+    localStorage.setItem("clips", JSON.stringify([]));
+})();
+
 function App() {
   return (
     <>
