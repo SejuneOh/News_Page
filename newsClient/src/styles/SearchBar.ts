@@ -50,10 +50,17 @@ export const SearchDiv = styled.div`
 `;
 
 export const SearchList = styled.ul`
-  width: 600px;
+  width: 604px;
   height: 400px;
   border: 2px solid #e4e7e8;
+  box-sizing: border-box;
   position: absolute;
   left: 33%;
   background-color: #fff;
+  transition: height 0.4s;
+
+  &.close {
+    height: 0;
+    opacity: 0;
+  }
 `;
