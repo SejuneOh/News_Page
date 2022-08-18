@@ -55,6 +55,7 @@ export const SearchList = styled.ul`
   border: 2px solid #e4e7e8;
   box-sizing: border-box;
   position: absolute;
+  z-index: 1;
   left: 33%;
   background-color: #fff;
   transition: height 0.4s;
