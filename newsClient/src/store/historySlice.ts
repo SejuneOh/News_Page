@@ -10,17 +10,9 @@ const historySlice = createSlice({
   initialState: initState,
   reducers: {
     getHistory(state, action: PayloadAction<Array<string>>) {
-      console.log(
-        "🚀 ~ file: historySlice.ts ~ line 13 ~ getHistory ~ action",
-        action.payload
-      );
       state.list = action.payload;
     },
     setHistory(state, action: PayloadAction<Array<string>>) {
-      console.log(
-        "🚀 ~ file: historySlice.ts ~ line 21 ~ setHistory ~ payload",
-        action.payload
-      );
       state.list = action.payload;
     },
   },

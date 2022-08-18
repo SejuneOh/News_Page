@@ -33,10 +33,6 @@ export default function SearchBar() {
 
   useEffect(() => {
     dispatch(getLocalHistoryData());
-    console.log(
-      "🚀 ~ file: SearchBar.tsx ~ line 15 ~ SearchBar ~ searchHistory",
-      searchHistory
-    );
   }, []);
 
   return (
