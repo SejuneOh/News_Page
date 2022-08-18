@@ -68,4 +68,9 @@ export const SearchList = styled.ul`
     height: 0;
     opacity: 0;
   }
+
+  > li {
+    border: 1px solid red;
+    margin: 4px 6px;
+  }
 `;
