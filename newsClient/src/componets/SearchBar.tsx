@@ -54,7 +54,12 @@ export default function SearchBar() {
       <SearchList className={open ? "" : "close"}>
         {searchHistory &&
           searchHistory.map((data, idx) => {
-            return <li key={idx}>{data}</li>;
+            return (
+              <li key={idx}>
+                {data}
+                <div className="historyDelete"></div>
+              </li>
+            );
           })}
       </SearchList>
     </Wrapper>

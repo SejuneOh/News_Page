@@ -70,7 +70,20 @@ export const SearchList = styled.ul`
   }
 
   > li {
-    border: 1px solid red;
     margin: 4px 6px;
+    height: 30px;
+    line-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .historyDelete {
+    height: 15px;
+    width: 15px;
+    background-color: #fff;
+    background-image: url("/src/assets/closeIcon.png");
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 `;
