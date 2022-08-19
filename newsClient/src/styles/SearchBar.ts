@@ -85,5 +85,6 @@ export const SearchList = styled.ul`
     background-image: url("/src/assets/closeIcon.png");
     background-repeat: no-repeat;
     background-size: cover;
+    cursor: pointer;
   }
 `;
