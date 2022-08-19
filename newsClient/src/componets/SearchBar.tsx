@@ -1,8 +1,9 @@
 import { SearchDiv, SearchList, Wrapper } from "../styles/SearchBar";
 import searchIcon from "../assets/search.svg";
-import { useEffect, useState } from "react";
+import { JSXElementConstructor, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
 import {
+  deleteLocalHistroy,
   getLocalHistoryData,
   setLocalHistoryData,
 } from "../store/historyActions";
@@ -57,7 +58,13 @@ export default function SearchBar() {
             return (
               <li key={idx}>
                 {data}
-                <div className="historyDelete"></div>
+                <div
+                  className="historyDelete"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    dispatch(deleteLocalHistroy(data));
+                  }}
+                ></div>
               </li>
             );
           })}

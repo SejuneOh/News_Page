@@ -15,6 +15,9 @@ const historySlice = createSlice({
     setHistory(state, action: PayloadAction<Array<string>>) {
       state.list = action.payload;
     },
+    deleteHistory(state, action: PayloadAction<Array<string>>) {
+      state.list = action.payload;
+    },
   },
 });
 
