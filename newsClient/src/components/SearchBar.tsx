@@ -1,18 +1,14 @@
+import { useEffect, useState } from "react";
 import { SearchDiv, SearchList, Wrapper } from "../styles/SearchBar";
-import searchIcon from "../assets/search.svg";
-import { JSXElementConstructor, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
-import {
-  deleteLocalHistroy,
-  getLocalHistoryData,
-  setLocalHistoryData,
-} from "../store/historyActions";
+import searchIcon from "../assets/search.svg";
+import { delTerm, getTermsHistory, setTerm } from "../store/termActions";
 
 export default function SearchBar() {
   const [open, setOpen] = useState<boolean>(false);
   const [searchVal, setSearchVal] = useState<string>("");
   const dispatch = useAppDispatch();
-  const searchHistory = useAppSelector((state) => state.history.list);
+  const searchHistory = useAppSelector((state) => state.term.termHistory);
 
   const searchInputHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchVal(e.target.value);
@@ -22,8 +18,7 @@ export default function SearchBar() {
     // 1초뒤에 검색할 수 있도록 변경한다.
     const searchTime = setTimeout(() => {
       //  로컬 스토리지 저장
-      dispatch(setLocalHistoryData(searchVal));
-      //  검색항목 데이터로 전달
+      dispatch(setTerm(searchVal));
     }, 1000);
 
     // 1초뒤에  검색 timeout 정의
@@ -32,8 +27,9 @@ export default function SearchBar() {
     };
   }, [searchVal]);
 
+  // 최초실행
   useEffect(() => {
-    dispatch(getLocalHistoryData());
+    dispatch(getTermsHistory());
   }, []);
 
   return (
@@ -62,7 +58,7 @@ export default function SearchBar() {
                   className="historyDelete"
                   onClick={(e) => {
                     e.preventDefault();
-                    dispatch(deleteLocalHistroy(data));
+                    dispatch(delTerm(data));
                   }}
                 ></div>
               </li>

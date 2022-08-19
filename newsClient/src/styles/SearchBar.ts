@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div``;
+export const Wrapper = styled.div`
+  position: fixed;
+  left: 32.5%;
+`;
 
 export const SearchDiv = styled.div`
   width: 600px;
@@ -40,7 +43,7 @@ export const SearchDiv = styled.div`
 
   .searchIcon {
     width: 45px;
-    height: 46px;
+    height: 47px;
     border: 1px solid #03cf5b;
     background-color: #03cf5b;
     box-sizing: border-box;
@@ -49,6 +52,7 @@ export const SearchDiv = styled.div`
     justify-content: center;
     margin: 0;
     position: absolute;
+    top: -1px;
     right: -1px;
   }
 `;
@@ -59,8 +63,7 @@ export const SearchList = styled.ul`
   border: 2px solid #e4e7e8;
   box-sizing: border-box;
   position: absolute;
-  z-index: 1;
-  left: 33%;
+  z-index: 2;
   background-color: #fff;
   transition: height 0.4s;
 

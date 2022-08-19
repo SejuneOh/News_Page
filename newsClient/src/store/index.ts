@@ -1,8 +1,12 @@
+import { newsSlice } from "./newsSlice";
 import { configureStore } from "@reduxjs/toolkit";
-import historySlice from "./historySlice";
+import termSlice from "./termsSlice";
 
 const store = configureStore({
-  reducer: { history: historySlice.reducer },
+  reducer: {
+    news: newsSlice.reducer,
+    term: termSlice.reducer,
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>;
