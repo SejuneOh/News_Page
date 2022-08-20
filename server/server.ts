@@ -45,6 +45,15 @@ const resolvers = {
       };
 
       return axios.get(url, option).then((res) => {
+        const items = res.data.items;
+
+        items.forEach((element: any) => {
+          console.log(
+            "🚀 ~ file: server.ts ~ line 51 ~ items.forEach ~ element",
+            { element }
+          );
+        });
+
         return res.data;
       });
     },
