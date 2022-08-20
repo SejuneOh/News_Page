@@ -1,7 +1,7 @@
-import { gql, QueryResult, useLazyQuery, useQuery } from "@apollo/client";
-import { useEffect, useState } from "react";
+import { gql, useLazyQuery } from "@apollo/client";
+import { useEffect } from "react";
 import { useAppSelector } from "../hooks/redux-hooks";
-import { Container } from "../styles/newsListStyle";
+import { Container, DefaultDiv } from "../styles/newsListStyle";
 
 const GET__NEWS = gql`
   query SearchNews($param: String!, $cnt: Int!) {
@@ -59,7 +59,9 @@ export default function NewsList() {
           </ul>
         </div>
       ) : (
-        <div>검색 내용이 없습니다.</div>
+        <DefaultDiv>
+          <span className="alert">검색 내용이 없습니다.</span>
+        </DefaultDiv>
       )}
     </Container>
   );

@@ -8,3 +8,18 @@ export const Container = styled.section`
   height: 100%;
   box-sizing: border-box;
 `;
+
+export const DefaultDiv = styled.div`
+  border: 1px solid red;
+  height: 100%;
+  display: flex;
+
+  .alert {
+    display: inline-block;
+    font-size: 25px;
+    position: relative;
+    left: 44.5%;
+    top: 30%;
+    height: 27px;
+  }
+`;
