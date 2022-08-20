@@ -2,6 +2,14 @@ import { ApolloServer, gql } from "apollo-server";
 import axios from "axios";
 import dotenv from "dotenv";
 
+interface News {
+  title: string;
+  originallink: string;
+  link: string;
+  description: string;
+  pubDate: string;
+}
+
 //  dot.env 설정
 dotenv.config({ path: "./.env" });
 
@@ -36,6 +44,8 @@ const resolvers = {
         headers: {
           "X-Naver-Client-Id": process.env.CLIENT_ID,
           "X-Naver-Client-Secret": process.env.CLIENT_SCRETE,
+          charset: "utf-8",
+          responseEncodig: "utf-8",
         },
         params: {
           query: param,
@@ -45,16 +55,31 @@ const resolvers = {
       };
 
       return axios.get(url, option).then((res) => {
-        const items = res.data.items;
+        // 특수문자 관련 삭제
+        if (res.status === 200) {
+          const newsItems = res.data.items;
+          const filterData = newsItems.map((item: News) => {
+            item.title = item.title.replace(/(<([^>]+)>)|&quot|&apos;/gi, "");
+            item.description = item.description.replace(
+              /(<([^>]+)>)|&quot|&apos;/gi,
+              ""
+            );
+            item.link = item.link.replace(/(<([^>]+)>)|&quot|&apos;/gi, "");
+            item.originallink = item.originallink.replace(
+              /(<([^>]+)>)|&quot|&apos;/gi,
+              ""
+            );
+            item.pubDate = item.pubDate.replace(
+              /(<([^>]+)>)|&quot|&apos;/gi,
+              ""
+            );
 
-        items.forEach((element: any) => {
-          console.log(
-            "🚀 ~ file: server.ts ~ line 51 ~ items.forEach ~ element",
-            { element }
-          );
-        });
+            return item;
+          });
 
-        return res.data;
+          res.data.items = filterData;
+          return res.data;
+        }
       });
     },
   },
