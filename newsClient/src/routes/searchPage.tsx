@@ -12,7 +12,7 @@ export default function searchPage() {
   return (
     <Container>
       <SearchBar />
-      {/* <NewsList></NewsList> */}
+      <NewsList></NewsList>
     </Container>
   );
 }
