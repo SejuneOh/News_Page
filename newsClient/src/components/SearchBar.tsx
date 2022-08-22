@@ -49,6 +49,7 @@ export default function SearchBar() {
         </div>
       </SearchDiv>
       <SearchList className={open ? "" : "close"}>
+        {/* <SearchList className="open"> */}
         {searchHistory &&
           searchHistory.map((data, idx) => {
             return (

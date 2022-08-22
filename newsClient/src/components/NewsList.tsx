@@ -57,7 +57,7 @@ export default function NewsList() {
         <div>
           <ul>
             {data.searchNews.items.map((item: any, idx: number) => (
-              <NewsCard newsItem={item}></NewsCard>
+              <NewsCard key={idx} newsItem={item}></NewsCard>
             ))}
           </ul>
         </div>
