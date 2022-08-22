@@ -15,6 +15,7 @@ const GET__NEWS = gql`
       items {
         title
         link
+        originallink
         description
         pubDate
       }

@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const HeaderStyle = styled.div`
-  border: 1px solid gray;
   position: fixed;
   width: 100%;
   z-index: 2;
   background-color: #fff;
+  height: 140px;
 `;
 
 const Title = styled.div`
@@ -34,7 +34,7 @@ const Option = styled(Link)`
   width: 100%;
   height: 50px;
   font-weight: 500;
-  border: 1px solid #dae1e6;
+  border: 2px solid #dae1e6;
   line-height: 50px;
   cursor: pointer;
 

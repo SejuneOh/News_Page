@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   position: fixed;
-  left: 32.5%;
+  background-color: #fff;
+  width: 100%;
 `;
 
 export const SearchDiv = styled.div`
@@ -66,6 +67,7 @@ export const SearchList = styled.ul`
   z-index: 2;
   background-color: #fff;
   transition: height 0.4s;
+  left: 33%;
 
   &.close {
     height: 0;

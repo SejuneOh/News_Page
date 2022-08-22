@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NewsModel } from "../models/newsModel";
 import { NewsCardStyle } from "../styles/newsCardStyle";
-import startIcon from "../assets/star.svg";
 
 type NewsItem = {
   newsItem: NewsModel;
@@ -14,7 +13,7 @@ function funcTransDate(date: string): string {
   const day = newDate.getDate() + 2;
   const time = `${newDate.getHours()}:${newDate.getMinutes()}`;
 
-  const result = `${year}/${month}/${day} ${time}`;
+  const result = `발행 날짜 : ${year}/${month}/${day} ${time}`;
 
   return result;
 }
