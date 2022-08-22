@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import SearchPage from "./routes/SearchPage";
 import ClipsPage from "./routes/ClipsPage";
 import Header from "./components/Header";
+import styled from "styled-components";
 
 // 프로그램 실행 시, 로컬 스토리지 생성하기
 (() => {
