@@ -12,7 +12,6 @@ export const NewsCardStyle = styled.div`
   }
 
   .wrapper {
-    border: 1px solid blue;
     margin: 4px 5px;
     padding: 2px;
     display: flex;
@@ -23,6 +22,13 @@ export const NewsCardStyle = styled.div`
   .title {
     font-size: 28px;
     font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+
+    &:hover {
+      color: gray;
+    }
   }
 
   .description {
@@ -40,5 +46,6 @@ export const NewsCardStyle = styled.div`
     font-size: 12px;
     font-weight: 400;
     color: gray;
+    /* border: 1px solid red; */
   }
 `;

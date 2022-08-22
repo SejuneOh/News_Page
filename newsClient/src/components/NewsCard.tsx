@@ -25,7 +25,14 @@ export default function NewsCard({ newsItem }: NewsItem): React.ReactElement {
   return (
     <NewsCardStyle>
       <div className="wrapper">
-        <span className="title">{newsItem.title}</span>
+        <a
+          className="title"
+          href={newsItem.originallink}
+          target="_blank"
+          rel="noreferrer"
+        >
+          {newsItem.title}
+        </a>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="40"
