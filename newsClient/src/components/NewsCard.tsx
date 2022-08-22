@@ -7,6 +7,18 @@ type NewsItem = {
   newsItem: NewsModel;
 };
 
+function funcTransDate(date: string): string {
+  const newDate = new Date(date);
+  const year = newDate.getFullYear();
+  const month = newDate.getMonth() + 1;
+  const day = newDate.getDate() + 2;
+  const time = `${newDate.getHours()}:${newDate.getMinutes()}`;
+
+  const result = `${year}/${month}/${day} ${time}`;
+
+  return result;
+}
+
 export default function NewsCard({ newsItem }: NewsItem): React.ReactElement {
   const [clip, setClip] = useState(false);
   const [color, setColor] = useState<string>("#C4C3C3");
@@ -21,6 +33,10 @@ export default function NewsCard({ newsItem }: NewsItem): React.ReactElement {
       setColor("#C4C3C3");
     }
   };
+
+  useEffect(() => {
+    funcTransDate(newsItem.pubDate);
+  }, []);
 
   return (
     <NewsCardStyle>
@@ -50,7 +66,7 @@ export default function NewsCard({ newsItem }: NewsItem): React.ReactElement {
       </div>
       <span className="description">{newsItem.description}</span>
       <span className="link">{newsItem.link}</span>
-      <span className="date">{newsItem.pubDate}</span>
+      <span className="date">{funcTransDate(newsItem.pubDate)}</span>
     </NewsCardStyle>
   );
 }

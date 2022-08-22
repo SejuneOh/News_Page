@@ -50,27 +50,14 @@ export default function NewsList() {
     <h1>Error</h1>;
   }
 
-  // test
-  const tmpData: NewsModel = {
-    title: "타이틀",
-    originallink: "https://naver.com",
-    link: "https://naver.com",
-    description: "설명",
-    pubDate: "Sat, 20 Aug 2022 18:44:00 +0900",
-  };
-
   // 조건부 렌더링
   return (
     <Container>
-      <NewsCard newsItem={tmpData}></NewsCard>
-
-      {/* {data ? (
+      {data ? (
         <div>
-          <span>{data.searchNews.display}</span>
-          <span>{data.searchNews.total}</span>
           <ul>
             {data.searchNews.items.map((item: any, idx: number) => (
-              <li key={idx}>{item.title}</li>
+              <NewsCard newsItem={item}></NewsCard>
             ))}
           </ul>
         </div>
@@ -78,7 +65,7 @@ export default function NewsList() {
         <DefaultDiv>
           <span className="alert">검색 내용이 없습니다.</span>
         </DefaultDiv>
-      )} */}
+      )}
     </Container>
   );
 }
