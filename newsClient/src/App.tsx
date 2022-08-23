@@ -18,7 +18,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<SearchPage />}></Route>
-        {/* <Route path="/clips" element={<ClipsPage />}></Route> */}
+        <Route path="/clips" element={<ClipsPage />}></Route>
       </Routes>
     </>
   );

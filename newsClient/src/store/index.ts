@@ -1,11 +1,13 @@
 import { newsSlice } from "./newsSlice";
 import { configureStore } from "@reduxjs/toolkit";
 import termSlice from "./termsSlice";
+import clipSlice from "./clipSlice";
 
 const store = configureStore({
   reducer: {
     news: newsSlice.reducer,
     term: termSlice.reducer,
+    clips: clipSlice.reducer,
   },
 });
 

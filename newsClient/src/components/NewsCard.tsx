@@ -19,18 +19,20 @@ function funcTransDate(date: string): string {
 }
 
 export default function NewsCard({ newsItem }: NewsItem): React.ReactElement {
-  const [clip, setClip] = useState(false);
+  const [isClip, setIsClip] = useState(false);
   const [color, setColor] = useState<string>("#C4C3C3");
 
-  //clip start select
+  //isClip start select
   const clipClickHandle = () => {
-    setClip((prev) => !prev);
+    setIsClip((prev) => !prev);
 
-    if (clip) {
+    if (isClip) {
       setColor("#F2F202");
     } else {
       setColor("#C4C3C3");
     }
+
+    // 클립 세팅
   };
 
   useEffect(() => {
@@ -55,6 +57,9 @@ export default function NewsCard({ newsItem }: NewsItem): React.ReactElement {
           viewBox="0 0 14 13"
         >
           <path
+            style={{
+              cursor: "pointer",
+            }}
             id="star"
             d="M9,2l2.163,4.279L16,6.969,12.5,10.3l.826,4.7L9,12.779,4.674,15,5.5,10.3,2,6.969l4.837-.69Z"
             transform="translate(-2 -2)"

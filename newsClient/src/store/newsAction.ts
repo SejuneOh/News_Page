@@ -5,6 +5,7 @@ import newsServcie from "../services/newsServcie";
 
 export const newsActions = newsSlice.actions;
 
+//foc
 export const getNewsList = (term: string, cnt: number) => {
   return async (dispatch: any, getState: any) => {
     if (term.length > 0) {
