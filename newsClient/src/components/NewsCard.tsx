@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
 import { NewsModel } from "../models/newsModel";
+import { fetchClip, removeClip } from "../store/clipAction";
 import { NewsCardStyle } from "../styles/newsCardStyle";
 
 type NewsItem = {
@@ -8,35 +10,37 @@ type NewsItem = {
 
 function funcTransDate(date: string): string {
   const newDate = new Date(date);
-  const year = newDate.getFullYear();
-  const month = newDate.getMonth() + 1;
-  const day = newDate.getDate() + 2;
-  const time = `${newDate.getHours()}:${newDate.getMinutes()}`;
 
-  const result = `발행 날짜 : ${year}/${month}/${day} ${time}`;
-
-  return result;
+  return `발행날짜 : ${newDate.getFullYear()}/${newDate.getMonth() + 1}/${
+    newDate.getDate() + 2
+  } ${newDate.getHours()}:${newDate.getMinutes()}`;
 }
 
 export default function NewsCard({ newsItem }: NewsItem): React.ReactElement {
-  const [isClip, setIsClip] = useState(false);
+  const [isClip, setIsClip] = useState<boolean>(false);
   const [color, setColor] = useState<string>("#C4C3C3");
+  const dispatch = useAppDispatch();
+  const clipList = useAppSelector((state) => state.clips.clipList);
 
   //isClip start select
   const clipClickHandle = () => {
-    setIsClip((prev) => !prev);
-
     if (isClip) {
-      setColor("#F2F202");
-    } else {
       setColor("#C4C3C3");
+      dispatch(removeClip(newsItem.link));
+    } else {
+      setColor("#F2F202");
+      dispatch(fetchClip(newsItem));
     }
 
-    // 클립 세팅
+    setIsClip((prev) => !prev);
   };
 
   useEffect(() => {
     funcTransDate(newsItem.pubDate);
+    if (clipList.find((item: NewsModel) => item.link === newsItem.link)) {
+      setIsClip(true);
+      setColor("#F2F202");
+    }
   }, []);
 
   return (

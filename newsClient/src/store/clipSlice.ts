@@ -16,8 +16,12 @@ const clipSlice = createSlice({
     getClips(state, action: PayloadAction<Array<NewsModel>>) {
       state.clipList = action.payload;
     },
-    removeClip(state, action) {},
-    fetchClip(state, action) {},
+    removeClip(state, action: PayloadAction<Array<NewsModel>>) {
+      state.clipList = action.payload;
+    },
+    fetchClip(state, action: PayloadAction<Array<NewsModel>>) {
+      state.clipList = action.payload;
+    },
   },
 });
 
