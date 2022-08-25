@@ -6,7 +6,6 @@ import { NewsModel } from "../models/newsModel";
 import { getClips } from "../store/clipAction";
 
 const ClipPageDiv = styled.div`
-  border: 3px solid blue;
   position: relative;
   top: 140px;
 
