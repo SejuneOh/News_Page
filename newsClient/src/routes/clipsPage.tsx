@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import styled from "styled-components";
-import NewsCard from "../components/newsCard";
+import NewsCard from "../components/NewsCard";
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
 import { NewsModel } from "../models/newsModel";
 import { getClips } from "../store/clipAction";
@@ -9,6 +9,17 @@ const ClipPageDiv = styled.div`
   border: 3px solid blue;
   position: relative;
   top: 140px;
+
+  .noSearchPage {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    > span {
+      font-size: 25px;
+    }
+  }
 `;
 
 export default function ClipsPage() {
@@ -37,7 +48,9 @@ export default function ClipsPage() {
           </ul>
         </div>
       ) : (
-        <div>검색 결과가 없습니다.</div>
+        <div className="noSearchPage">
+          <span>즐겨찾기 목록이 없습니다.</span>
+        </div>
       )}
     </ClipPageDiv>
   );

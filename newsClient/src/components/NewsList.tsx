@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useAppSelector } from "../hooks/redux-hooks";
 import { NewsModel } from "../models/newsModel";
 import { Container, DefaultDiv } from "../styles/newsListStyle";
-import NewsCard from "./newsCard";
+import NewsCard from "./NewsCard";
 
 const GET__NEWS = gql`
   query SearchNews($param: String!, $cnt: Int!) {
