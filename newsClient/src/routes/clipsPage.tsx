@@ -30,10 +30,6 @@ export default function ClipsPage() {
   // 최초 실행
   useEffect(() => {
     dispatch(getClips());
-    console.log(
-      "🚀 ~ file: clipsPage.tsx ~ line 19 ~ ClipsPage ~ clips",
-      clips
-    );
   }, []);
 
   return (

@@ -37,11 +37,12 @@ export default function NewsCard({ newsItem }: NewsItem): React.ReactElement {
 
   useEffect(() => {
     funcTransDate(newsItem.pubDate);
+
     if (clipList.find((item: NewsModel) => item.link === newsItem.link)) {
       setIsClip(true);
       setColor("#F2F202");
     }
-  }, []);
+  }, [clipList]);
 
   return (
     <NewsCardStyle>
