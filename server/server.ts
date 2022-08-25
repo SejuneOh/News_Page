@@ -59,12 +59,18 @@ const resolvers = {
         if (res.status === 200) {
           const newsItems = res.data.items;
           const filterData = newsItems.map((item: News) => {
-            item.title = item.title.replace(/(<([^>]+)>)|&quot|&apos;/gi, "");
+            item.title = item.title.replace(
+              /(<([^>]+)>)|&quot|&apos;|&lt;|&gt;/gi,
+              ""
+            );
             item.description = item.description.replace(
               /(<([^>]+)>)|&quot|&apos;/gi,
               ""
             );
-            item.link = item.link.replace(/(<([^>]+)>)|&quot|&apos;/gi, "");
+            item.link = item.link.replace(
+              /(<([^>]+)>)|&quot|&apos;|&lt;|&gt;/gi,
+              ""
+            );
             item.originallink = item.originallink.replace(
               /(<([^>]+)>)|&quot|&apos;/gi,
               ""
