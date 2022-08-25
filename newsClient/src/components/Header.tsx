@@ -60,6 +60,15 @@ export default function Header() {
     if (active) setActive((prev) => !prev);
   };
 
+  useEffect(() => {
+    const urlPath: string = window.location.pathname;
+
+    // url path에 맞춰서  tag 활성화
+    if (urlPath === "/clips") {
+      setActive(false);
+    }
+  }, []);
+
   return (
     <HeaderStyle>
       <Title>
